@@ -1,0 +1,24 @@
+[[main]]
+url = "/"
+name = "🏠"
+weight = 1
+
+[[main]]
+url = "/about/"
+name = "О проекте"
+weight = 2
+
+[[main]]
+url = "/post/"
+name = "Статьи"
+weight = 3
+
+[[main]]
+url = "/books/"
+name = "Книги"
+weight = 4
+
+[[main]]
+url = "/movies/"
+name = "Фильмы"
+weight = 5
