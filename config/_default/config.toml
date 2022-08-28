@@ -2,3 +2,5 @@ baseURL = 'http://example.org/'
 languageCode = 'en-us'
 title = 'Dolkons Hugo Site'
 theme = "ananke"
+
+[params]

@@ -1,0 +1,10 @@
+author = "Костя Долгий"
+description = "Личный островок в океане Интернета"
+githubUsername = "#"
+accent = "red"
+showBorder = true
+backgroundColor = "white"
+font = "Raleway" # should match the name on Google Fonts!
+highlight = true
+highlightStyle = "default"
+highlightLanguages = ["go", "haskell", "kotlin", "scala", "swift"]
