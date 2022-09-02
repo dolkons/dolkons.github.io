@@ -1,4 +1,8 @@
 baseURL: 'http://example.org/'
 languageCode: 'en-us'
-title: 'dolkons'
+title: 'dolkons personal blog'
 theme: "LoveIt"
+
+author:
+  name: "Kostya Dolgii"
+  email: "dolkons@gmail.com"

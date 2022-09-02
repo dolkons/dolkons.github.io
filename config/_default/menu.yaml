@@ -1,20 +1,15 @@
 main:
-  - url: /
-    name: "🏠"
-    weight: 1
-
-  - url: /about/
-    name: О проекте
-    weight: 2
-
-  - url: /qa/
+  - weight: 1
+    identifier: qa
+    pre: ''
+    post: ''
     name: QA
-    weight: 3
-
-  - url: /yoga/
-    name: Йога
-    weight: 4
-
-  - url: /books/
-    name: Книги
-    weight: 5
+    url: /qa/
+    title: ''
+  - weight: 2
+    identifier: yoga
+    pre: ''
+    post: ''
+    name: Yoga
+    url: /yoga/
+    title: ''
