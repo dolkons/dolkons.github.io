@@ -5,15 +5,11 @@ colorScheme: "dark"
 avatarurl: "/images/avatar.jpg"
 
 social:
+  - name: telegram
+    icon: fa fa-telegram fa-2x
+    weight: 1
+    url: 'https://t.me/dolkons'
   - name: Github
     icon: fa fa-github fa-2x
-    weight: 1
-    url: 'https://github.com/johndoe/'
-  - name: Gitlab
-    icon: fa fa-gitlab fa-2x
     weight: 2
-    url: 'https://gitlab.com/johndoe/'
-  - name: Twitter
-    icon: fa fa-twitter fa-2x
-    weight: 3
-    url: 'https://twitter.com/johndoe/'
+    url: 'https://github.com/dolkons/'
