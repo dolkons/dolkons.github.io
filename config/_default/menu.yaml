@@ -5,11 +5,11 @@ main:
     post: ''
     name: QA
     url: /qa/
-    title: ''
+    title: 'Всё о тестировании'
   - weight: 2
     identifier: yoga
     pre: ''
     post: ''
     name: Yoga
     url: /yoga/
-    title: ''
+    title: 'Всё о йоге'
