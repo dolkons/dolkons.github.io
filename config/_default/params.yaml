@@ -3,7 +3,7 @@ gitRepo: ''
 fingerprint: ''
 dateFormat: '02-09-2022'
 title: My cool site
-description: This is my cool site123
+description: This is my cool site
 images:
   - /logo.png
 header:
@@ -60,12 +60,12 @@ home:
   profile:
     enable: true
     gravatarEmail: ''
-    avatarURL: /images/avatar.png
-    title: ''
-    subtitle: This is My New Hugo Site
+    avatarURL: /images/avatar.jpg
+    title: 'Костя Долгий'
+    subtitle: Привет, Я Костя. QA Full Stack Engineer
     typeit: true
     social: true
-    disclaimer: ''
+    disclaimer: 'Моя персональная страничка в глубоком океане Интернета'
   posts:
     enable: true
     paginate: 6
