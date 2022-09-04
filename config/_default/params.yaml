@@ -4,8 +4,6 @@ fingerprint: ''
 dateFormat: '02-09-2022'
 title: My cool site
 description: This is my cool site
-images:
-  - /logo.png
 header:
   desktopMode: fixed
   mobileMode: auto
@@ -150,7 +148,7 @@ page:
   hiddenFromHomePage: false
   hiddenFromSearch: false
   twemoji: false
-  lightgallery: false
+  lightgallery: true
   ruby: true
   fraction: true
   fontawesome: true
