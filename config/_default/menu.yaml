@@ -1,5 +1,9 @@
 main:
   - weight: 1
+    identifier: home
+    name: home
+    url: /
+  - weight: 1
     identifier: qa
     pre: ''
     post: ''
