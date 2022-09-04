@@ -5,6 +5,8 @@ featuredImage: https://yogajournal.ru/upload/resize_cache/webp/upload/iblock/8de
 draft: false
 ---
 
+> "Нет нужды в храмах, нет нужды в сложной философии. Мой мозг и мое сердце являются моими храмами; моя философия — это доброта." (с) Далай-Лама
+
 # Яма
 ## Ахимса
 впвапва
