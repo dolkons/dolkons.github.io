@@ -71,12 +71,12 @@ home:
     paginate: 6
     defaultHiddenFromHomePage: false
 social:
-  GitHub: xxxx
+  GitHub: ''
   Linkedin: ''
-  Twitter: xxxx
-  Instagram: xxxx
-  Facebook: xxxx
-  Telegram: xxxx
+  Twitter: ''
+  Instagram: dolkons1989
+  Facebook: ''
+  Telegram: dolkons
   Medium: ''
   Gitlab: ''
   Youtubelegacy: ''
@@ -93,7 +93,7 @@ social:
   Stackoverflow: ''
   Weibo: ''
   Odnoklassniki: ''
-  VK: ''
+  VK: dolkons
   Flickr: ''
   Xing: ''
   Snapchat: ''
@@ -144,8 +144,8 @@ social:
   HackTheBox: ''
   RootMe: ''
   Phone: ''
-  Email: xxxx@xxxx.com
-  RSS: true
+  Email: dolkons@gmail.com
+  RSS: false
 page:
   hiddenFromHomePage: false
   hiddenFromSearch: false
