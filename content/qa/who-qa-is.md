@@ -2,7 +2,7 @@
 weight: 3
 title: "Кто такой QA-инженер?"
 date: 2022-09-03T20:23:27+03:00
-draft: false
+draft: true
 images: []
 resources:
 - name: 'featured-image'
