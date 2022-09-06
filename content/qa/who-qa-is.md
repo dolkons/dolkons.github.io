@@ -3,10 +3,7 @@ weight: 3
 title: "Кто такой QA-инженер?"
 date: 2022-09-03T20:23:27+03:00
 draft: true
-images: []
-resources:
-- name: 'featured-image'
-  src: 'featured-image.jpg'
+thumbnail: https://bugza.info/wp-content/uploads/2020/05/InstantQA_Blogpost.jpg
 ---
 
 > Подходите к тестированию с намерением, что любой, даже самый совершенный программный код всегда содержит в себе ошибки 
