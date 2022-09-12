@@ -1,19 +1,15 @@
 main:
   - weight: 1
     identifier: home
-    name: home
+    name: 🏠
     url: /
-  - weight: 1
+  - weight: 2
     identifier: qa
-    pre: ''
-    post: ''
     name: QA
     url: /qa/
     title: 'Всё о тестировании'
-  - weight: 2
+  - weight: 3
     identifier: yoga
-    pre: ''
-    post: ''
     name: Yoga
     url: /yoga/
     title: 'Всё о йоге'
