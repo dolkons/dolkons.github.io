@@ -19,6 +19,9 @@ thumbnail: /qa/playwright/images/playwright.png
 1. Создаём файлик global-setup.ts
 2. В конфиге указываем ссылку на файл
 
+   `const config: PlaywrightTestConfig = {
+   globalSetup: require.resolve('./e2e-tests/global-setup'),`
+
 # Пишем тест
 > Тест
 
