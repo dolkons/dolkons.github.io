@@ -1,0 +1,10 @@
+#main:
+#  - weight: 1
+#    identifier: home
+#    name: 🏠
+#    url: /
+#  - weight: 1
+#    identifier: qa
+#    name: QA
+#    url: /qa/
+#    title: 'Всё о тестировании'
