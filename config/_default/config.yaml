@@ -1,4 +1,4 @@
-baseURL: /
+baseURL: 'http://dolkons.ru.website.yandexcloud.net'
 languageCode: 'en-us'
 title: 'dolkons personal blog'
 theme: "LoveIt"
