@@ -27,8 +27,11 @@ jobs:
         run: hugo --minify
 
       - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
+        uses: nekitcorp/yandex-storage-website-action@v1
         if: ${{ github.ref == 'refs/heads/master' }}
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./public
+          accessKeyId: ${{ secrets.ACCESS_KEY_ID }}
+          secretAccessKey: ${{ secrets.SECRET_ACCESS_KEY }}
+          bucket: ${{ secrets.BUCKET }}
+          path: "./public"
+          clear: true
