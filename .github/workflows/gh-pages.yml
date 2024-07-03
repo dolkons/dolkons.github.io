@@ -27,7 +27,7 @@ jobs:
         run: hugo --minify
 
       - name: Deploy
-        uses: nekitcorp/yandex-storage-website-action@v1
+        uses: nekitcorp/yandex-storage-website-action@v2
         if: ${{ github.ref == 'refs/heads/master' }}
         with:
           accessKeyId: ${{ secrets.ACCESS_KEY_ID }}
