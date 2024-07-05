@@ -30,8 +30,8 @@ jobs:
         uses: nekitcorp/yandex-storage-website-action@v2
         if: ${{ github.ref == 'refs/heads/master' }}
         with:
-          accessKeyId: ${{ secrets.ACCESS_KEY_ID }}
-          secretAccessKey: ${{ secrets.SECRET_ACCESS_KEY }}
+          access-key-id: ${{ secrets.ACCESS_KEY_ID }}
+          secret-access-key: ${{ secrets.SECRET_ACCESS_KEY }}
           bucket: ${{ secrets.BUCKET }}
           path: "./public"
           clear: true
