@@ -1,0 +1,64 @@
+import {Fragment as _Fragment, jsx as _jsx, jsxs as _jsxs} from "react/jsx-runtime";
+import {useMDXComponents as _provideComponents} from "@mdx-js/react";
+function _createMdxContent(props) {
+  const _components = {
+    code: "code",
+    h1: "h1",
+    h2: "h2",
+    li: "li",
+    p: "p",
+    pre: "pre",
+    ul: "ul",
+    ..._provideComponents(),
+    ...props.components
+  };
+  return _jsxs(_Fragment, {
+    children: [_jsx(_components.h1, {
+      children: "Playwright: Начало работы"
+    }), "\n", _jsx(_components.h2, {
+      children: "Введение"
+    }), "\n", _jsx(_components.p, {
+      children: "Playwright - это современный инструмент для автоматизации тестирования веб-приложений. Он поддерживает все современные браузеры и предоставляет мощный API для написания надежных тестов."
+    }), "\n", _jsx(_components.h2, {
+      children: "Установка"
+    }), "\n", _jsx(_components.pre, {
+      children: _jsx(_components.code, {
+        className: "language-bash",
+        children: "npm init playwright@latest\n"
+      })
+    }), "\n", _jsx(_components.h2, {
+      children: "Базовый пример"
+    }), "\n", _jsx(_components.pre, {
+      children: _jsx(_components.code, {
+        className: "language-typescript",
+        children: "import { test, expect } from '@playwright/test';\n\ntest('basic test', async ({ page }) => {\n  await page.goto('https://example.com');\n  await expect(page).toHaveTitle('Example Domain');\n});\n"
+      })
+    }), "\n", _jsx(_components.h2, {
+      children: "Основные возможности"
+    }), "\n", _jsxs(_components.ul, {
+      children: ["\n", _jsx(_components.li, {
+        children: "Поддержка всех современных браузеров"
+      }), "\n", _jsx(_components.li, {
+        children: "Автоматическое ожидание элементов"
+      }), "\n", _jsx(_components.li, {
+        children: "Встроенная поддержка скриншотов"
+      }), "\n", _jsx(_components.li, {
+        children: "Работа с iframe и вкладками"
+      }), "\n", _jsx(_components.li, {
+        children: "Эмуляция мобильных устройств"
+      }), "\n"]
+    })]
+  });
+}
+export default function MDXContent(props = {}) {
+  const {wrapper: MDXLayout} = {
+    ..._provideComponents(),
+    ...props.components
+  };
+  return MDXLayout ? _jsx(MDXLayout, {
+    ...props,
+    children: _jsx(_createMdxContent, {
+      ...props
+    })
+  }) : _createMdxContent(props);
+}

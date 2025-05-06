@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdolkons_github_io=self.webpackChunkdolkons_github_io||[]).push([[242],{8242:(t,s,e)=>{t.exports=e.p+"static/media/getting-started.6dd270fa11c6bb325fc6.mdx"}}]);
