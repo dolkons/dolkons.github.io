@@ -1,6 +1,7 @@
 import React from 'react';
 import { Box, Typography, Avatar, Button, IconButton } from '@mui/material';
 import MainLayout from '../layouts/MainLayout';
+import TypewriterText from '../components/TypewriterText';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import TelegramIcon from '@mui/icons-material/Telegram';
@@ -43,19 +44,16 @@ const Home: React.FC = () => {
             boxShadow: 3
           }}
           alt="Костя Долгий"
-          onError={(e) => {
-            console.error("Error loading image:", e.target); // для отладки
-          }}
         />
 
         {/* Основная информация */}
         <Box textAlign="center" maxWidth="600px">
-          <Typography variant="h3" gutterBottom>
-            Привет, Я Костя
-          </Typography>
-          <Typography variant="h4" color="primary" gutterBottom>
-            QA Web Automation Engineer
-          </Typography>
+          <TypewriterText 
+            variant="h3" 
+            gutterBottom
+            text="Привет, Я Костя - QA Web Automation Engineer"
+            delay={100}
+          />
           <Typography variant="body1" paragraph sx={{ fontSize: '1.1rem' }}>
             Добро пожаловать на мою персональную страничку в глубоком океане Интернета.
             Здесь я делюсь своим опытом в области автоматизации тестирования веб-приложений,

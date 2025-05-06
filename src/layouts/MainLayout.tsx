@@ -15,7 +15,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
         height: '100vh',
         overflow: 'hidden',
         position: 'relative',
-        background: 'linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)'
+        background: 'linear-gradient(135deg, #e0e0e0 0%, #9e9e9e 100%)'
       }}>
         {/* Навигационные кнопки */}
         <Box sx={{ 
