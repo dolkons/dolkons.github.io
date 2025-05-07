@@ -2,6 +2,7 @@ import React from 'react';
 import { Box, Typography, Avatar, Button, IconButton } from '@mui/material';
 import MainLayout from '../layouts/MainLayout';
 import TypewriterText from '../components/TypewriterText';
+import TechIconsPanel from '../components/TechIconsPanel';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import TelegramIcon from '@mui/icons-material/Telegram';
@@ -18,6 +19,7 @@ const Home: React.FC = () => {
 
   return (
     <MainLayout>
+      <TechIconsPanel />
       <Box 
         display="flex" 
         flexDirection="column" 
@@ -57,8 +59,6 @@ const Home: React.FC = () => {
           />
           <Typography variant="body1" paragraph sx={{ fontSize: '1.1rem', mb: 6 }}>
             Добро пожаловать на мою персональную страничку в глубоком океане Интернета.
-            Здесь я делюсь своим опытом в области автоматизации тестирования веб-приложений,
-            особенно с использованием Playwright.
           </Typography>
         </Box>
 
