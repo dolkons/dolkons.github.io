@@ -8,7 +8,6 @@ import TelegramIcon from '@mui/icons-material/Telegram';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import avatarImage from '../assets/images/avatar.jpg';
 
-
 const Home: React.FC = () => {
   const socialLinks = [
     { icon: <GitHubIcon />, url: 'https://github.com/dolkons', label: 'GitHub' },
@@ -24,10 +23,10 @@ const Home: React.FC = () => {
         flexDirection="column" 
         alignItems="center" 
         justifyContent="center"
-        gap={4}
+        gap={6}
         sx={{
           minHeight: '100vh',
-          py: 8,
+          py: 12,
           px: 4,
           background: 'linear-gradient(180deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.7) 100%)',
           backdropFilter: 'blur(10px)',
@@ -41,20 +40,22 @@ const Home: React.FC = () => {
             height: 100,
             border: '4px solid',
             borderColor: 'primary.main',
-            boxShadow: 3
+            boxShadow: 3,
+            mt: -8
           }}
           alt="Костя Долгий"
         />
 
         {/* Основная информация */}
-        <Box textAlign="center" maxWidth="600px">
+        <Box textAlign="center" maxWidth="800px">
           <TypewriterText 
             variant="h3" 
             gutterBottom
             text="Привет, Я Костя - QA Web Automation Engineer"
             delay={100}
+            sx={{ mb: 4 }}
           />
-          <Typography variant="body1" paragraph sx={{ fontSize: '1.1rem' }}>
+          <Typography variant="body1" paragraph sx={{ fontSize: '1.1rem', mb: 6 }}>
             Добро пожаловать на мою персональную страничку в глубоком океане Интернета.
             Здесь я делюсь своим опытом в области автоматизации тестирования веб-приложений,
             особенно с использованием Playwright.
