@@ -42,17 +42,17 @@ const TechIconsPanel: React.FC = () => {
           position: 'absolute',
           left: 0,
           right: 0,
-          height: '100px',
+          height: '150px',
           zIndex: 2,
           pointerEvents: 'none',
         },
         '&::before': {
           top: 0,
-          background: 'linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%)',
+          background: 'linear-gradient(to bottom, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0) 100%)',
         },
         '&::after': {
           bottom: 0,
-          background: 'linear-gradient(to top, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%)',
+          background: 'linear-gradient(to top, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0) 100%)',
         }
       }}
     >
@@ -76,12 +76,26 @@ const TechIconsPanel: React.FC = () => {
               display: 'flex',
               alignItems: 'center',
               gap: { xs: 1, sm: 2 },
-              padding: { xs: '4px 8px', sm: '8px 16px' },
-              transition: 'transform 0.2s',
+              padding: { xs: '6px 10px', sm: '10px 18px' },
+              transition: 'all 0.3s ease-in-out',
               marginBottom: { xs: 2, sm: 4 },
+              borderRadius: '8px',
               '&:hover': {
                 transform: 'scale(1.1)',
+                boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+                backgroundColor: 'rgba(255,255,255,0.1)',
+                '& img': {
+                  filter: 'drop-shadow(0 0 8px rgba(0,0,0,0.2))',
+                },
+                '& span': {
+                  color: theme.palette.primary.main,
+                }
               },
+              '@media (hover: none)': {
+                '&:active': {
+                  transform: 'scale(1.05)',
+                }
+              }
             }}
           >
             <Box
@@ -89,18 +103,22 @@ const TechIconsPanel: React.FC = () => {
               src={tech.icon}
               alt={tech.label}
               sx={{
-                width: { xs: 20, sm: 24 },
-                height: { xs: 20, sm: 24 },
-                objectFit: 'contain'
+                width: { xs: 24, sm: 28 },
+                height: { xs: 24, sm: 28 },
+                objectFit: 'contain',
+                transition: 'all 0.3s ease-in-out',
+                filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.1))',
               }}
             />
             <Box
               component="span"
               sx={{
-                fontSize: { xs: '0.7rem', sm: '0.9rem' },
-                fontWeight: 500,
+                fontSize: { xs: '0.8rem', sm: '1rem' },
+                fontWeight: 600,
                 color: 'text.primary',
-                display: { xs: 'none', sm: 'block' }
+                display: { xs: 'none', sm: 'block' },
+                transition: 'color 0.3s ease-in-out',
+                textShadow: '0 1px 2px rgba(0,0,0,0.1)',
               }}
             >
               {tech.label}
