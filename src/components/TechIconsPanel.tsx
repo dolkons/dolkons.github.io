@@ -30,30 +30,13 @@ const TechIconsPanel: React.FC = () => {
         position: 'fixed',
         left: { xs: 5, sm: 40 },
         top: 0,
-        height: '100vh',
+        height: 'calc(100vh - 56px)',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
         gap: { xs: 2, sm: 4 },
         zIndex: 1000,
-        overflow: 'hidden',
-        '&::before, &::after': {
-          content: '""',
-          position: 'absolute',
-          left: 0,
-          right: 0,
-          height: '150px',
-          zIndex: 2,
-          pointerEvents: 'none',
-        },
-        '&::before': {
-          top: 0,
-          background: 'linear-gradient(to bottom, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0) 100%)',
-        },
-        '&::after': {
-          bottom: 0,
-          background: 'linear-gradient(to top, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0) 100%)',
-        }
+        overflow: 'hidden'
       }}
     >
       <Box

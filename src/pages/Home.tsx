@@ -33,7 +33,7 @@ const Home: React.FC = () => {
           minHeight: '100vh',
           py: { xs: 8, sm: 12 },
           px: { xs: 2, sm: 4 },
-          background: 'linear-gradient(180deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.85) 100%)',
+          background: 'linear-gradient(180deg, rgba(245,245,245,0.95) 0%, rgba(235,235,235,0.85) 100%)',
           backdropFilter: 'blur(10px)',
           position: 'relative',
           '&::before': {
@@ -48,6 +48,84 @@ const Home: React.FC = () => {
           }
         }}
       >
+        {/* Кнопка резюме */}
+        <Button
+          variant="contained"
+          size="small"
+          color="primary"
+          sx={{ 
+            position: 'fixed',
+            top: 20,
+            right: 20,
+            px: 2,
+            py: 0.5,
+            fontSize: '0.8rem',
+            textTransform: 'none',
+            borderRadius: 2,
+            boxShadow: '0 2px 8px rgba(25, 118, 210, 0.2)',
+            transition: 'all 0.3s ease-in-out',
+            zIndex: 1000,
+            '&:hover': {
+              transform: 'translateY(-2px)',
+              boxShadow: '0 4px 12px rgba(25, 118, 210, 0.3)',
+            }
+          }}
+          href="/resume.pdf"
+          download
+        >
+          Скачать резюме
+        </Button>
+
+        {/* Социальные сети */}
+        <Box 
+          display="flex" 
+          gap={1}
+          sx={{
+            position: 'fixed',
+            top: 60,
+            right: 20,
+            zIndex: 1000,
+            animation: 'slideUp 0.8s ease-out 0.5s both',
+            '@keyframes slideUp': {
+              '0%': {
+                opacity: 0,
+                transform: 'translateY(20px)',
+              },
+              '100%': {
+                opacity: 1,
+                transform: 'translateY(0)',
+              },
+            }
+          }}
+        >
+          {socialLinks.map((social) => (
+            <IconButton
+              key={social.label}
+              href={social.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              color="primary"
+              sx={{ 
+                width: 28,
+                height: 28,
+                backgroundColor: 'rgba(25, 118, 210, 0.08)',
+                transition: 'all 0.3s ease-in-out',
+                '&:hover': {
+                  backgroundColor: 'rgba(25, 118, 210, 0.15)',
+                  transform: 'translateY(-2px)',
+                  boxShadow: '0 4px 12px rgba(25, 118, 210, 0.2)',
+                },
+                '& svg': {
+                  fontSize: '1rem'
+                }
+              }}
+              aria-label={social.label}
+            >
+              {social.icon}
+            </IconButton>
+          ))}
+        </Box>
+
         {/* Аватар */}
         <Avatar
           src={avatarImage}
@@ -57,7 +135,7 @@ const Home: React.FC = () => {
             border: '2px solid',
             borderColor: 'primary.main',
             boxShadow: '0 8px 32px rgba(0,0,0,0.1)',
-            mt: { xs: -4, sm: -16 },
+            mt: { xs: -32, sm: -48 },
             transition: 'all 0.3s ease-in-out',
             '&:hover': {
               transform: 'scale(1.05)',
@@ -114,73 +192,6 @@ const Home: React.FC = () => {
           >
             Добро пожаловать на мою персональную страничку в глубоком океане Интернета.
           </Typography>
-        </Box>
-
-        {/* Кнопка резюме */}
-        <Button
-          variant="contained"
-          size="large"
-          color="primary"
-          sx={{ 
-            px: 4,
-            py: 1.5,
-            fontSize: '1.1rem',
-            textTransform: 'none',
-            borderRadius: 3,
-            boxShadow: '0 4px 20px rgba(25, 118, 210, 0.3)',
-            transition: 'all 0.3s ease-in-out',
-            '&:hover': {
-              transform: 'translateY(-2px)',
-              boxShadow: '0 6px 25px rgba(25, 118, 210, 0.4)',
-            }
-          }}
-          href="/resume.pdf"
-          download
-        >
-          Скачать резюме
-        </Button>
-
-        {/* Социальные сети */}
-        <Box 
-          display="flex" 
-          gap={2}
-          sx={{
-            animation: 'slideUp 0.8s ease-out 0.5s both',
-            '@keyframes slideUp': {
-              '0%': {
-                opacity: 0,
-                transform: 'translateY(20px)',
-              },
-              '100%': {
-                opacity: 1,
-                transform: 'translateY(0)',
-              },
-            }
-          }}
-        >
-          {socialLinks.map((social) => (
-            <IconButton
-              key={social.label}
-              href={social.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              color="primary"
-              sx={{ 
-                width: { xs: 40, sm: 48 },
-                height: { xs: 40, sm: 48 },
-                backgroundColor: 'rgba(25, 118, 210, 0.08)',
-                transition: 'all 0.3s ease-in-out',
-                '&:hover': {
-                  backgroundColor: 'rgba(25, 118, 210, 0.15)',
-                  transform: 'translateY(-3px)',
-                  boxShadow: '0 4px 12px rgba(25, 118, 210, 0.2)',
-                }
-              }}
-              aria-label={social.label}
-            >
-              {social.icon}
-            </IconButton>
-          ))}
         </Box>
       </Box>
     </MainLayout>
