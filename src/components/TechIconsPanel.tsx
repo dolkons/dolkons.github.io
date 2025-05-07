@@ -28,7 +28,7 @@ const TechIconsPanel: React.FC = () => {
     <Box
       sx={{
         position: 'fixed',
-        left: { xs: 10, sm: 60 },
+        left: { xs: 5, sm: 40 },
         top: 0,
         height: '100vh',
         display: 'flex',
