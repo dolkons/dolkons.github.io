@@ -10,6 +10,7 @@ import gitIcon from '../assets/icons/git.svg';
 import gitlabCIIcon from '../assets/icons/gitlabci.svg';
 import vscodeIcon from '../assets/icons/vscode.svg';
 import qaIcon from '../assets/icons/qa.svg';
+import allureIcon from '../assets/icons/allure.svg';
 
 const TechIconsPanel: React.FC = () => {
   const theme = useTheme();
@@ -26,6 +27,7 @@ const TechIconsPanel: React.FC = () => {
     { icon: gitlabCIIcon, label: 'Gitlab CI' },
     { icon: vscodeIcon, label: 'VSCode' },
     { icon: qaIcon, label: 'QA' },
+    { icon: allureIcon, label: 'Allure' },
   ];
 
   return (
@@ -61,23 +63,25 @@ const TechIconsPanel: React.FC = () => {
       <Box
         sx={{
           display: 'flex',
+          overflow: 'hidden',
           gap: { xs: 2, sm: 4 },
-          animation: 'slideRight 30s linear infinite',
+          animation: 'slideRight 90s linear infinite',
           '@keyframes slideRight': {
             '0%': {
-              transform: 'translateX(-100%)',
+              transform: 'translateX(0%)',
             },
             '100%': {
-              transform: 'translateX(100%)',
+              transform: 'translateX(-50%)',
             },
           },
         }}
       >
-        {techIcons.map((tech, index) => (
+        {[...techIcons, ...techIcons, ...techIcons].map((tech) => (
           <Box
             key={tech.label}
             sx={{
               display: 'flex',
+              flexShrink: 0,
               alignItems: 'center',
               gap: { xs: 1, sm: 2 },
               padding: { xs: '6px 10px', sm: '10px 18px' },
