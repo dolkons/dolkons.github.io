@@ -6,8 +6,13 @@ import TechIconsPanel from '../components/TechIconsPanel';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import TelegramIcon from '@mui/icons-material/Telegram';
-import InstagramIcon from '@mui/icons-material/Instagram';
 import avatarImage from '../assets/images/avatar.jpg';
+import vkIcon from '../assets/icons/vk.svg';
+import resumeFile from '../assets/files/resume.pdf';
+
+const VkIcon = () => (
+  <img src={vkIcon} alt="VK" style={{ width: '1rem', height: '1rem' }} />
+);
 
 const Home: React.FC = () => {
   const theme = useTheme();
@@ -17,7 +22,7 @@ const Home: React.FC = () => {
     { icon: <GitHubIcon />, url: 'https://github.com/dolkons', label: 'GitHub' },
     { icon: <LinkedInIcon />, url: 'https://linkedin.com/in/dolkons', label: 'LinkedIn' },
     { icon: <TelegramIcon />, url: 'https://t.me/dolkons', label: 'Telegram' },
-    { icon: <InstagramIcon />, url: 'https://instagram.com/dolkons1989', label: 'Instagram' },
+    { icon: <VkIcon />, url: 'https://vk.com/dolkons', label: 'VK' },
   ];
 
   return (
@@ -57,21 +62,24 @@ const Home: React.FC = () => {
             position: 'fixed',
             top: 20,
             right: 20,
-            px: 2,
+            px: 1.5,
             py: 0.5,
-            fontSize: '0.8rem',
+            fontSize: '0.7rem',
             textTransform: 'none',
-            borderRadius: 2,
-            boxShadow: '0 2px 8px rgba(25, 118, 210, 0.2)',
+            borderRadius: 1.5,
+            boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
             transition: 'all 0.3s ease-in-out',
             zIndex: 1000,
+            backgroundColor: 'rgba(117, 117, 117, 0.8)',
+            backdropFilter: 'blur(4px)',
             '&:hover': {
               transform: 'translateY(-2px)',
-              boxShadow: '0 4px 12px rgba(25, 118, 210, 0.3)',
+              boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
+              backgroundColor: 'rgba(117, 117, 117, 0.9)',
             }
           }}
-          href="/resume.pdf"
-          download
+          href={resumeFile}
+          download="resume.pdf"
         >
           Скачать резюме
         </Button>

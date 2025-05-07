@@ -13,7 +13,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
       <Box sx={{ 
         minHeight: '100vh',
         position: 'relative',
-        background: 'linear-gradient(135deg, #e0e0e0 0%, #9e9e9e 100%)'
+        background: 'linear-gradient(135deg, #b0b0b0 0%, #606060 100%)'
       }}>
         {/* Основной контент */}
         <Box sx={{ 
