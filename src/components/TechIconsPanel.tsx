@@ -8,6 +8,8 @@ import reactIcon from '../assets/icons/react.svg';
 import nodeIcon from '../assets/icons/nodejs.svg';
 import gitIcon from '../assets/icons/git.svg';
 import gitlabCIIcon from '../assets/icons/gitlabci.svg';
+import vscodeIcon from '../assets/icons/vscode.svg';
+import qaIcon from '../assets/icons/qa.svg';
 
 const TechIconsPanel: React.FC = () => {
   const theme = useTheme();
@@ -22,6 +24,8 @@ const TechIconsPanel: React.FC = () => {
     { icon: nodeIcon, label: 'Node.js' },
     { icon: gitIcon, label: 'Git' },
     { icon: gitlabCIIcon, label: 'Gitlab CI' },
+    { icon: vscodeIcon, label: 'VSCode' },
+    { icon: qaIcon, label: 'QA' },
   ];
 
   return (

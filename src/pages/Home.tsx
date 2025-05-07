@@ -140,7 +140,7 @@ const Home: React.FC = () => {
           sx={{ 
             width: { xs: 80, sm: 110 }, 
             height: { xs: 80, sm: 110 },
-            border: '2px solid',
+            border: '1px solid',
             borderColor: 'primary.main',
             boxShadow: '0 8px 32px rgba(0,0,0,0.1)',
             mt: { xs: -32, sm: -48 },
@@ -179,7 +179,7 @@ const Home: React.FC = () => {
             sx={{ 
               mb: 2,
               fontWeight: 400,
-              background: 'linear-gradient(45deg, #1976d2, #2196f3)',
+              background: 'linear-gradient(45deg, #757575, #9e9e9e)',
               backgroundClip: 'text',
               textFillColor: 'transparent',
               WebkitBackgroundClip: 'text',
