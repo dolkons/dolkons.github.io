@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, useTheme, useMediaQuery } from '@mui/material';
+import { Box, Typography, useTheme, useMediaQuery } from '@mui/material';
 import jsIcon from '../assets/icons/javascript.svg';
 import tsIcon from '../assets/icons/typescript.svg';
 import playwrightIcon from '../assets/icons/playwright.svg';
@@ -28,26 +28,43 @@ const TechIconsPanel: React.FC = () => {
     <Box
       sx={{
         position: 'fixed',
-        left: { xs: 5, sm: 40 },
-        top: 0,
-        height: 'calc(100vh - 56px)',
+        left: '50%',
+        top: '50%',
+        transform: 'translate(-50%, 1%)',
+        width: '100%',
+        maxWidth: '800px',
         display: 'flex',
         flexDirection: 'column',
-        justifyContent: 'center',
-        gap: { xs: 2, sm: 4 },
+        alignItems: 'center',
+        gap: 2,
         zIndex: 1000,
         overflow: 'hidden'
       }}
     >
+      <Typography
+        variant={isMobile ? "subtitle2" : "subtitle1"}
+        sx={{
+          color: 'text.secondary',
+          fontWeight: 500,
+          opacity: 0.7,
+          letterSpacing: '0.05em',
+          mb: 2
+        }}
+      >
+        Профессиональные навыки
+      </Typography>
+
       <Box
         sx={{
-          animation: 'slideDown 30s linear infinite',
-          '@keyframes slideDown': {
+          display: 'flex',
+          gap: { xs: 2, sm: 4 },
+          animation: 'slideRight 30s linear infinite',
+          '@keyframes slideRight': {
             '0%': {
-              transform: 'translateY(-100%)',
+              transform: 'translateX(-100%)',
             },
             '100%': {
-              transform: 'translateY(100%)',
+              transform: 'translateX(100%)',
             },
           },
         }}
