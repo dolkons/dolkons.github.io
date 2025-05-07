@@ -7,7 +7,7 @@ import dockerIcon from '../assets/icons/docker.svg';
 import reactIcon from '../assets/icons/react.svg';
 import nodeIcon from '../assets/icons/nodejs.svg';
 import gitIcon from '../assets/icons/git.svg';
-import jestIcon from '../assets/icons/jest.svg';
+import gitlabCIIcon from '../assets/icons/gitlabci.svg';
 
 const TechIconsPanel: React.FC = () => {
   const theme = useTheme();
@@ -21,7 +21,7 @@ const TechIconsPanel: React.FC = () => {
     { icon: reactIcon, label: 'React' },
     { icon: nodeIcon, label: 'Node.js' },
     { icon: gitIcon, label: 'Git' },
-    { icon: jestIcon, label: 'Jest' },
+    { icon: gitlabCIIcon, label: 'Gitlab CI' },
   ];
 
   return (
