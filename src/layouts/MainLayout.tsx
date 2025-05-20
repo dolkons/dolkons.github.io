@@ -41,7 +41,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
           }}
         >
           <Typography variant="body2" color="text.secondary" sx={{ textShadow: '0 1px 2px rgba(0,0,0,0.1)' }}>
-            © {new Date().getFullYear()} Костя Долгий. Все права защищены.
+            © {new Date().getFullYear()} Костя Долгий
           </Typography>
         </Box>
       </Box>
