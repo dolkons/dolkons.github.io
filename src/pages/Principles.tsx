@@ -114,47 +114,6 @@ const PrinciplesPage: React.FC = () => {
             margin: '0 auto',
           }}
         >
-          {/* SVG линии */}
-          {!isMobile && (
-            <svg
-              style={{
-                position: 'absolute',
-                top: 0,
-                left: 0,
-                width: '100%',
-                height: '100%',
-                zIndex: 1,
-                pointerEvents: 'none',
-              }}
-            >
-              {lines.map((line, index) => (
-                <line
-                  key={index}
-                  x1={line.x1}
-                  y1={line.y1}
-                  x2={line.x2}
-                  y2={line.y2}
-                  stroke={theme.palette.primary.light}
-                  strokeWidth={2}
-                  markerEnd="url(#arrowhead)"
-                />
-              ))}
-              <defs>
-                <marker
-                  id="arrowhead"
-                  markerWidth="10"
-                  markerHeight="7"
-                  refX="0"
-                  refY="3.5"
-                  orient="auto"
-                  markerUnits="strokeWidth"
-                >
-                  <polygon points="0 0, 10 3.5, 0 7" fill={theme.palette.primary.main} />
-                </marker>
-              </defs>
-            </svg>
-          )}
-
           {/* Центральный аватар */}
           <Box
             sx={{
@@ -174,7 +133,7 @@ const PrinciplesPage: React.FC = () => {
                 height: '100%',
                 border: `3px solid ${theme.palette.primary.main}`,
                 boxShadow: theme.shadows[8],
-                transition: 'all 0.3s ease',
+                transition: 'all 0.5s ease',
                 '&:hover': {
                   transform: 'scale(1.05)',
                   boxShadow: theme.shadows[16]
@@ -187,7 +146,7 @@ const PrinciplesPage: React.FC = () => {
           {/* Блоки принципов */}
           {principles.map((principle, index) => {
             const angle = (360 / principles.length) * index;
-            const radius = isMobile ? 0 : 200; // радиус круга в px
+            const radius = isMobile ? 0 : 240; // радиус круга в px
             const angleInRad = (angle - 90) * (Math.PI / 180); // -90, чтобы начать сверху
 
             const top = `calc(50% + ${radius * Math.sin(angleInRad)}px)`;
@@ -209,7 +168,7 @@ const PrinciplesPage: React.FC = () => {
         margin: isMobile ? '16px auto' : '0',
         zIndex: 3,
         '&:hover': {
-          transform: isMobile ? 'none' : 'translateY(-5px)',
+          transform: isMobile ? 'none' : 'translate(-50%, -50%) scale(1.05)',
           boxShadow: theme.shadows[6],
           background: `linear-gradient(135deg, ${theme.palette.grey[100]} 0%, #e0e0e0 100%)`
         },
