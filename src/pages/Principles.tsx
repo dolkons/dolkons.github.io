@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import { Box, Typography, Avatar, Paper, useTheme, useMediaQuery } from '@mui/material';
 import MainLayout from '../layouts/MainLayout';
 import avatarImage from '../assets/images/avatar.jpg';
@@ -6,6 +6,10 @@ import avatarImage from '../assets/images/avatar.jpg';
 const PrinciplesPage: React.FC = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+
+  const containerRef = useRef<HTMLDivElement>(null);
+  const blockRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const [lines, setLines] = useState<{ x1: number; y1: number; x2: number; y2: number }[]>([]);
 
   const principles = [
     { title: 'Семья', content: 'Гармоничные отношения, поддержка, совместное развитие' },
@@ -18,17 +22,41 @@ const PrinciplesPage: React.FC = () => {
     { title: 'Духовность', content: 'Медитации, рефлексия, осознанность, благодарность' },
   ];
 
-  // Позиции блоков по кругу
   const positions = [
-    { top: '10%', left: '50%', transform: 'translateX(-50%)' },    // Верх
-    { top: '20%', left: '80%', transform: 'translateX(-50%)' },   // Верх-право
-    { top: '50%', left: '90%', transform: 'translateX(-50%)' },   // Право
-    { top: '80%', left: '80%', transform: 'translateX(-50%)' },   // Низ-право
-    { top: '90%', left: '50%', transform: 'translateX(-50%)' },   // Низ
-    { top: '80%', left: '20%', transform: 'translateX(-50%)' },   // Низ-лево
-    { top: '50%', left: '10%', transform: 'translateX(-50%)' },   // Лево
-    { top: '20%', left: '20%', transform: 'translateX(-50%)' },   // Верх-лево
+    { top: '10%', left: '50%', transform: 'translateX(-50%)' },
+    { top: '20%', left: '80%', transform: 'translateX(-50%)' },
+    { top: '50%', left: '90%', transform: 'translateX(-50%)' },
+    { top: '80%', left: '80%', transform: 'translateX(-50%)' },
+    { top: '90%', left: '50%', transform: 'translateX(-50%)' },
+    { top: '80%', left: '20%', transform: 'translateX(-50%)' },
+    { top: '50%', left: '10%', transform: 'translateX(-50%)' },
+    { top: '20%', left: '20%', transform: 'translateX(-50%)' },
   ];
+
+  useEffect(() => {
+    if (!containerRef.current) return;
+
+    const containerRect = containerRef.current.getBoundingClientRect();
+    const centerX = containerRect.left + containerRect.width / 2;
+    const centerY = containerRect.top + containerRect.height / 2;
+
+    const newLines = blockRefs.current.map((block) => {
+      if (!block) return { x1: 0, y1: 0, x2: 0, y2: 0 };
+
+      const blockRect = block.getBoundingClientRect();
+      const blockX = blockRect.left + blockRect.width / 2;
+      const blockY = blockRect.top + blockRect.height / 2;
+
+      return {
+        x1: centerX - containerRect.left,
+        y1: centerY - containerRect.top,
+        x2: blockX - containerRect.left,
+        y2: blockY - containerRect.top,
+      };
+    });
+
+    setLines(newLines);
+  }, [isMobile]);
 
   return (
     <MainLayout>
@@ -53,10 +81,10 @@ const PrinciplesPage: React.FC = () => {
           }
         }}
       >
-        <Typography 
-          variant="h4" 
-          align="center" 
-          sx={{ 
+        <Typography
+          variant="h4"
+          align="center"
+          sx={{
             mb: isMobile ? 6 : 4,
             fontWeight: 500,
             color: theme.palette.primary.main,
@@ -76,6 +104,7 @@ const PrinciplesPage: React.FC = () => {
         </Typography>
 
         <Box
+          ref={containerRef}
           sx={{
             position: 'relative',
             width: '100%',
@@ -85,6 +114,47 @@ const PrinciplesPage: React.FC = () => {
             margin: '0 auto',
           }}
         >
+          {/* SVG линии */}
+          {!isMobile && (
+            <svg
+              style={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                width: '100%',
+                height: '100%',
+                zIndex: 1,
+                pointerEvents: 'none',
+              }}
+            >
+              {lines.map((line, index) => (
+                <line
+                  key={index}
+                  x1={line.x1}
+                  y1={line.y1}
+                  x2={line.x2}
+                  y2={line.y2}
+                  stroke={theme.palette.primary.light}
+                  strokeWidth={2}
+                  markerEnd="url(#arrowhead)"
+                />
+              ))}
+              <defs>
+                <marker
+                  id="arrowhead"
+                  markerWidth="10"
+                  markerHeight="7"
+                  refX="0"
+                  refY="3.5"
+                  orient="auto"
+                  markerUnits="strokeWidth"
+                >
+                  <polygon points="0 0, 10 3.5, 0 7" fill={theme.palette.primary.main} />
+                </marker>
+              </defs>
+            </svg>
+          )}
+
           {/* Центральный аватар */}
           <Box
             sx={{
@@ -114,112 +184,84 @@ const PrinciplesPage: React.FC = () => {
             />
           </Box>
 
-          {/* Контейнер для стрелок */}
-          {!isMobile && (
-            <Box
-              sx={{
-                position: 'absolute',
-                top: 0,
-                left: 0,
-                width: '100%',
-                height: '100%',
-                zIndex: 1,
-              }}
-            >
-              {principles.map((_, index) => (
-                <Box
-                  key={`arrow-${index}`}
-                  sx={{
-                    position: 'absolute',
-                    top: '50%',
-                    left: '50%',
-                    width: '40%',
-                    height: '2px',
-                    background: theme.palette.primary.light,
-                    transformOrigin: 'left center',
-                    transform: `rotate(${index * 45}deg)`,
-                    '&::after': {
-                      content: '""',
-                      position: 'absolute',
-                      right: 0,
-                      top: '50%',
-                      width: '10px',
-                      height: '10px',
-                      borderRight: `2px solid ${theme.palette.primary.main}`,
-                      borderBottom: `2px solid ${theme.palette.primary.main}`,
-                      transform: 'translateY(-50%) rotate(-45deg)'
-                    }
-                  }}
-                />
-              ))}
-            </Box>
-          )}
-
           {/* Блоки принципов */}
-          {principles.map((principle, index) => (
-            <Paper
-              key={index}
-              elevation={3}
-              sx={{
-                p: 2,
-                borderRadius: '16px',
-                background: `linear-gradient(135deg, ${theme.palette.background.paper} 0%, #f5f5f5 100%)`,
-                border: `1px solid ${theme.palette.divider}`,
-                transition: 'all 0.3s ease',
-                position: isMobile ? 'relative' : 'absolute',
-                width: isMobile ? '100%' : '180px',
-                maxWidth: isMobile ? '400px' : 'none',
-                margin: isMobile ? '16px auto' : '0',
-                zIndex: 3,
-                '&:hover': {
-                  transform: isMobile ? 'none' : 'translateY(-5px)',
-                  boxShadow: theme.shadows[6],
-                  background: `linear-gradient(135deg, ${theme.palette.grey[100]} 0%, #e0e0e0 100%)`
-                },
-                ...(!isMobile && positions[index]),
-              }}
-            >
-              <Typography 
-                variant="h6" 
-                sx={{ 
-                  mb: 1,
-                  color: theme.palette.primary.dark,
-                  fontWeight: 600,
-                  display: 'flex',
-                  alignItems: 'center',
-                  fontSize: isMobile ? '1.1rem' : '1rem',
-                  '&::before': {
-                    content: '""',
-                    display: 'inline-block',
-                    width: '10px',
-                    height: '10px',
-                    borderRadius: '50%',
-                    background: theme.palette.primary.main,
-                    marginRight: '8px'
-                  }
-                }}
-              >
-                {principle.title}
-              </Typography>
-              <Typography 
-                variant="body2" 
-                sx={{ 
-                  color: theme.palette.text.secondary,
-                  fontSize: isMobile ? '0.9rem' : '0.8rem'
-                }}
-              >
-                {principle.content}
-              </Typography>
-            </Paper>
-          ))}
+          {principles.map((principle, index) => {
+            const angle = (360 / principles.length) * index;
+            const radius = isMobile ? 0 : 200; // радиус круга в px
+            const angleInRad = (angle - 90) * (Math.PI / 180); // -90, чтобы начать сверху
+
+            const top = `calc(50% + ${radius * Math.sin(angleInRad)}px)`;
+            const left = `calc(50% + ${radius * Math.cos(angleInRad)}px)`;
+
+  return (
+    <Paper
+      key={index}
+      elevation={3}
+      sx={{
+        p: 2,
+        borderRadius: '16px',
+        background: `linear-gradient(135deg, ${theme.palette.background.paper} 0%, #f5f5f5 100%)`,
+        border: `1px solid ${theme.palette.divider}`,
+        transition: 'all 0.3s ease',
+        position: isMobile ? 'relative' : 'absolute',
+        width: isMobile ? '100%' : '180px',
+        maxWidth: isMobile ? '400px' : 'none',
+        margin: isMobile ? '16px auto' : '0',
+        zIndex: 3,
+        '&:hover': {
+          transform: isMobile ? 'none' : 'translateY(-5px)',
+          boxShadow: theme.shadows[6],
+          background: `linear-gradient(135deg, ${theme.palette.grey[100]} 0%, #e0e0e0 100%)`
+        },
+        ...(!isMobile && {
+          top,
+          left,
+          transform: 'translate(-50%, -50%)',
+        }),
+      }}
+    >
+      <Typography 
+        variant="h6" 
+        sx={{ 
+          mb: 1,
+          color: theme.palette.primary.dark,
+          fontWeight: 600,
+          display: 'flex',
+          alignItems: 'center',
+          fontSize: isMobile ? '1.1rem' : '1rem',
+          '&::before': {
+            content: '""',
+            display: 'inline-block',
+            width: '10px',
+            height: '10px',
+            borderRadius: '50%',
+            background: theme.palette.primary.main,
+            marginRight: '8px'
+          }
+        }}
+      >
+        {principle.title}
+      </Typography>
+      <Typography 
+        variant="body2" 
+        sx={{ 
+          color: theme.palette.text.secondary,
+          fontSize: isMobile ? '0.9rem' : '0.8rem'
+        }}
+      >
+        {principle.content}
+      </Typography>
+    </Paper>
+  );
+})}
         </Box>
 
-        {/* Цитата внизу страницы */}
+        {/* Цитата внизу */}
         {isMobile && (
           <Box sx={{ mt: 4, textAlign: 'center', maxWidth: '600px', mx: 'auto' }}>
-            <Typography 
-              variant="body1" 
-              sx={{ 
+            <Typography
+              variant="body1"
+              sx={{
                 fontStyle: 'italic',
                 color: theme.palette.text.secondary,
                 position: 'relative',
@@ -241,7 +283,7 @@ const PrinciplesPage: React.FC = () => {
                 }
               }}
             >
-              Жизнь - это не поиск себя, а создание себя. Каждый день я сознательно работаю над тем, 
+              Жизнь — это не поиск себя, а создание себя. Каждый день я сознательно работаю над тем, 
               чтобы стать лучшей версией себя во всех сферах жизни.
             </Typography>
           </Box>
