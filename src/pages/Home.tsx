@@ -9,6 +9,7 @@ import TelegramIcon from '@mui/icons-material/Telegram';
 import avatarImage from '../assets/images/avatar.jpg';
 import vkIcon from '../assets/icons/vk.svg';
 import resumeFile from '../assets/files/resume.pdf';
+import { Link } from 'react-router-dom';
 
 const VkIcon = () => (
   <img src={vkIcon} alt="VK" style={{ width: '1rem', height: '1rem' }} />
@@ -53,36 +54,71 @@ const Home: React.FC = () => {
           }
         }}
       >
-        {/* Кнопка резюме */}
-        <Button
-          variant="contained"
-          size="small"
-          color="primary"
-          sx={{ 
+        {/* Кнопки в правом верхнем углу */}
+        <Box
+          sx={{
             position: 'fixed',
             top: 20,
             right: 20,
-            px: 1.5,
-            py: 0.5,
-            fontSize: '0.7rem',
-            textTransform: 'none',
-            borderRadius: 1.5,
-            boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
-            transition: 'all 0.3s ease-in-out',
+            display: 'flex',
+            gap: 1,
             zIndex: 1000,
-            backgroundColor: 'rgba(117, 117, 117, 0.8)',
-            backdropFilter: 'blur(4px)',
-            '&:hover': {
-              transform: 'translateY(-2px)',
-              boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
-              backgroundColor: 'rgba(117, 117, 117, 0.9)',
-            }
           }}
-          href={resumeFile}
-          download="resume.pdf"
         >
-          Скачать резюме
-        </Button>
+          {/* Кнопка "Мои жизненные принципы" */}
+          <Button
+            component={Link}
+            to="/principles"
+            variant="contained"
+            size="small"
+            color="primary"
+            sx={{ 
+              px: 1.5,
+              py: 0.5,
+              fontSize: '0.7rem',
+              textTransform: 'none',
+              borderRadius: 1.5,
+              boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
+              transition: 'all 0.3s ease-in-out',
+              backgroundColor: 'rgba(25, 118, 210, 0.8)',
+              backdropFilter: 'blur(4px)',
+              '&:hover': {
+                transform: 'translateY(-2px)',
+                boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
+                backgroundColor: 'rgba(25, 118, 210, 0.9)',
+              }
+            }}
+          >
+            Мои принципы
+          </Button>
+          
+          {/* Кнопка резюме */}
+          <Button
+            variant="contained"
+            size="small"
+            color="primary"
+            sx={{ 
+              px: 1.5,
+              py: 0.5,
+              fontSize: '0.7rem',
+              textTransform: 'none',
+              borderRadius: 1.5,
+              boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
+              transition: 'all 0.3s ease-in-out',
+              backgroundColor: 'rgba(117, 117, 117, 0.8)',
+              backdropFilter: 'blur(4px)',
+              '&:hover': {
+                transform: 'translateY(-2px)',
+                boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
+                backgroundColor: 'rgba(117, 117, 117, 0.9)',
+              }
+            }}
+            href={resumeFile}
+            download="resume.pdf"
+          >
+            Скачать резюме
+          </Button>
+        </Box>
 
         {/* Социальные сети */}
         <Box 
@@ -206,4 +242,4 @@ const Home: React.FC = () => {
   );
 };
 
-export default Home; 
+export default Home;
