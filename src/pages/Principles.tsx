@@ -1,69 +1,92 @@
-import React, { useRef, useEffect, useState } from 'react';
-import { Box, Typography, Avatar, Paper, useTheme, useMediaQuery } from '@mui/material';
+import React from 'react';
+import { Box, Typography, Avatar, Paper, useTheme, useMediaQuery, Grid } from '@mui/material';
 import MainLayout from '../layouts/MainLayout';
 import avatarImage from '../assets/images/avatar.jpg';
+
+const principles = [
+  { title: 'Семья', content: 'Близкие отношения, поддержка, совместное развитие' },
+  { title: 'Здоровье', content: 'Регулярные check-up, сбалансированное питание, профилактика' },
+  { title: 'Спорт', content: '3-4 тренировки в неделю, развитие выносливости и силы' },
+  { title: 'Карьера', content: 'Постоянное развитие навыков, значимые проекты, баланс' },
+  { title: 'Финансы', content: 'Инвестиции, пассивный доход, финансовая подушка' },
+  { title: 'Развитие', content: 'Чтение, курсы, изучение нового, выход из зоны комфорта' },
+  { title: 'Творчество', content: 'Обучение игре на гитаре' },
+  { title: 'Духовность', content: 'Медитации, рефлексия, осознанность, благодарность' },
+];
+
+// Индексы для сетки 3x3, где центр — аватар, остальные — принципы
+const gridMap = [
+  0, 1, 2,
+  7, null, 3,
+  6, 5, 4
+];
+
+const PrincipleBlock = ({ title, content }: { title: string; content: string }) => {
+  const theme = useTheme();
+  return (
+    <Paper
+      elevation={3}
+      sx={{
+        p: 2,
+        borderRadius: '16px',
+        background: `linear-gradient(135deg, ${theme.palette.background.paper} 0%, #f5f5f5 100%)`,
+        border: `1px solid ${theme.palette.divider}`,
+        transition: 'all 0.3s ease',
+        width: '100%',
+        height: '100%',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        '&:hover': {
+          boxShadow: theme.shadows[6],
+          background: `linear-gradient(135deg, ${theme.palette.grey[100]} 0%, #e0e0e0 100%)`
+        }
+      }}
+    >
+      <Typography
+        variant="h6"
+        sx={{
+          mb: 1,
+          color: theme.palette.primary.dark,
+          fontWeight: 600,
+          display: 'flex',
+          alignItems: 'center',
+          fontSize: { xs: '1.1rem', md: '1rem' },
+          '&::before': {
+            content: '""',
+            display: 'inline-block',
+            width: '10px',
+            height: '10px',
+            borderRadius: '50%',
+            background: theme.palette.primary.main,
+            marginRight: '8px'
+          }
+        }}
+      >
+        {title}
+      </Typography>
+      <Typography
+        variant="body2"
+        sx={{
+          color: theme.palette.text.secondary,
+          fontSize: { xs: '0.9rem', md: '0.8rem' }
+        }}
+      >
+        {content}
+      </Typography>
+    </Paper>
+  );
+};
 
 const PrinciplesPage: React.FC = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
-  const containerRef = useRef<HTMLDivElement>(null);
-  const blockRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const [lines, setLines] = useState<{ x1: number; y1: number; x2: number; y2: number }[]>([]);
-
-  const principles = [
-    { title: 'Семья', content: 'Гармоничные отношения, поддержка, совместное развитие' },
-    { title: 'Здоровье', content: 'Регулярные check-up, сбалансированное питание, профилактика' },
-    { title: 'Спорт', content: '3-4 тренировки в неделю, развитие выносливости и силы' },
-    { title: 'Карьера', content: 'Постоянное развитие навыков, значимые проекты, баланс' },
-    { title: 'Финансы', content: 'Инвестиции, пассивный доход, финансовая подушка' },
-    { title: 'Развитие', content: 'Чтение, курсы, изучение нового, выход из зоны комфорта' },
-    { title: 'Творчество', content: 'Реализация идей, side projects, нестандартные решения' },
-    { title: 'Духовность', content: 'Медитации, рефлексия, осознанность, благодарность' },
-  ];
-
-  const positions = [
-    { top: '10%', left: '50%', transform: 'translateX(-50%)' },
-    { top: '20%', left: '80%', transform: 'translateX(-50%)' },
-    { top: '50%', left: '90%', transform: 'translateX(-50%)' },
-    { top: '80%', left: '80%', transform: 'translateX(-50%)' },
-    { top: '90%', left: '50%', transform: 'translateX(-50%)' },
-    { top: '80%', left: '20%', transform: 'translateX(-50%)' },
-    { top: '50%', left: '10%', transform: 'translateX(-50%)' },
-    { top: '20%', left: '20%', transform: 'translateX(-50%)' },
-  ];
-
-  useEffect(() => {
-    if (!containerRef.current) return;
-
-    const containerRect = containerRef.current.getBoundingClientRect();
-    const centerX = containerRect.left + containerRect.width / 2;
-    const centerY = containerRect.top + containerRect.height / 2;
-
-    const newLines = blockRefs.current.map((block) => {
-      if (!block) return { x1: 0, y1: 0, x2: 0, y2: 0 };
-
-      const blockRect = block.getBoundingClientRect();
-      const blockX = blockRect.left + blockRect.width / 2;
-      const blockY = blockRect.top + blockRect.height / 2;
-
-      return {
-        x1: centerX - containerRect.left,
-        y1: centerY - containerRect.top,
-        x2: blockX - containerRect.left,
-        y2: blockY - containerRect.top,
-      };
-    });
-
-    setLines(newLines);
-  }, [isMobile]);
-
   return (
     <MainLayout>
       <Box
         sx={{
-          height: isMobile ? 'auto' : '100vh',
-          minHeight: isMobile ? '100vh' : 'auto',
+          minHeight: '100vh',
           py: isMobile ? 8 : 4,
           px: { xs: 2, sm: 4 },
           background: 'linear-gradient(180deg, rgba(245,245,245,0.95) 0%, rgba(235,235,235,0.85) 100%)',
@@ -103,150 +126,107 @@ const PrinciplesPage: React.FC = () => {
           Мои жизненные принципы
         </Typography>
 
-        <Box
-          ref={containerRef}
-          sx={{
-            position: 'relative',
-            width: '100%',
-            height: isMobile ? 'auto' : 'calc(100vh - 200px)',
-            minHeight: isMobile ? 'auto' : '500px',
-            maxHeight: isMobile ? 'none' : '800px',
-            margin: '0 auto',
-          }}
-        >
-          {/* Центральный аватар */}
-          <Box
-            sx={{
-              position: 'absolute',
-              top: '50%',
-              left: '50%',
-              transform: 'translate(-50%, -50%)',
-              zIndex: 2,
-              width: isMobile ? '120px' : '160px',
-              height: isMobile ? '120px' : '160px',
-            }}
-          >
+        {isMobile ? (
+          <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 3 }}>
             <Avatar
               src={avatarImage}
               sx={{
-                width: '100%',
-                height: '100%',
+                width: 120,
+                height: 120,
                 border: `3px solid ${theme.palette.primary.main}`,
                 boxShadow: theme.shadows[8],
-                transition: 'all 0.5s ease',
-                '&:hover': {
-                  transform: 'scale(1.05)',
-                  boxShadow: theme.shadows[16]
-                }
+                mb: 3
               }}
               alt="Костя Долгий"
             />
+            {principles.map((p, i) => (
+              <Box key={i} sx={{ width: '100%', maxWidth: 400 }}>
+                <PrincipleBlock title={p.title} content={p.content} />
+              </Box>
+            ))}
           </Box>
-
-          {/* Блоки принципов */}
-          {principles.map((principle, index) => {
-            const angle = (360 / principles.length) * index;
-            const radius = isMobile ? 0 : 240; // радиус круга в px
-            const angleInRad = (angle - 90) * (Math.PI / 180); // -90, чтобы начать сверху
-
-            const top = `calc(50% + ${radius * Math.sin(angleInRad)}px)`;
-            const left = `calc(50% + ${radius * Math.cos(angleInRad)}px)`;
-
-  return (
-    <Paper
-      key={index}
-      elevation={3}
-      sx={{
-        p: 2,
-        borderRadius: '16px',
-        background: `linear-gradient(135deg, ${theme.palette.background.paper} 0%, #f5f5f5 100%)`,
-        border: `1px solid ${theme.palette.divider}`,
-        transition: 'all 0.3s ease',
-        position: isMobile ? 'relative' : 'absolute',
-        width: isMobile ? '100%' : '180px',
-        maxWidth: isMobile ? '400px' : 'none',
-        margin: isMobile ? '16px auto' : '0',
-        zIndex: 3,
-        '&:hover': {
-          transform: isMobile ? 'none' : 'translate(-50%, -50%) scale(1.05)',
-          boxShadow: theme.shadows[6],
-          background: `linear-gradient(135deg, ${theme.palette.grey[100]} 0%, #e0e0e0 100%)`
-        },
-        ...(!isMobile && {
-          top,
-          left,
-          transform: 'translate(-50%, -50%)',
-        }),
-      }}
-    >
-      <Typography 
-        variant="h6" 
-        sx={{ 
-          mb: 1,
-          color: theme.palette.primary.dark,
-          fontWeight: 600,
-          display: 'flex',
-          alignItems: 'center',
-          fontSize: isMobile ? '1.1rem' : '1rem',
-          '&::before': {
-            content: '""',
-            display: 'inline-block',
-            width: '10px',
-            height: '10px',
-            borderRadius: '50%',
-            background: theme.palette.primary.main,
-            marginRight: '8px'
-          }
-        }}
-      >
-        {principle.title}
-      </Typography>
-      <Typography 
-        variant="body2" 
-        sx={{ 
-          color: theme.palette.text.secondary,
-          fontSize: isMobile ? '0.9rem' : '0.8rem'
-        }}
-      >
-        {principle.content}
-      </Typography>
-    </Paper>
-  );
-})}
-        </Box>
+        ) : (
+          <Grid
+            container
+            spacing={3}
+            sx={{
+              width: 600,
+              maxWidth: '100%',
+              height: 600,
+              margin: '0 auto',
+              position: 'relative',
+              alignItems: 'center',
+              justifyContent: 'center',
+              display: 'grid',
+              gridTemplateRows: 'repeat(3, 1fr)',
+              gridTemplateColumns: 'repeat(3, 1fr)',
+              gap: 3
+            }}
+          >
+            {gridMap.map((idx, i) =>
+              idx === null ? (
+                <Box
+                  key="avatar"
+                  sx={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    width: '100%',
+                    height: '100%',
+                  }}
+                >
+                  <Avatar
+                    src={avatarImage}
+                    sx={{
+                      width: 160,
+                      height: 160,
+                      border: `3px solid ${theme.palette.primary.main}`,
+                      boxShadow: theme.shadows[8],
+                    }}
+                    alt="Костя Долгий"
+                  />
+                </Box>
+              ) : (
+                <PrincipleBlock
+                  key={idx}
+                  title={principles[idx].title}
+                  content={principles[idx].content}
+                />
+              )
+            )}
+          </Grid>
+        )}
 
         {/* Цитата внизу */}
-        {isMobile && (
-          <Box sx={{ mt: 4, textAlign: 'center', maxWidth: '600px', mx: 'auto' }}>
-            <Typography
-              variant="body1"
-              sx={{
-                fontStyle: 'italic',
-                color: theme.palette.text.secondary,
-                position: 'relative',
-                '&::before, &::after': {
-                  content: '"\\201C"',
-                  fontSize: '3rem',
-                  color: theme.palette.primary.light,
-                  position: 'absolute',
-                  opacity: 0.3
-                },
-                '&::before': {
-                  top: '-20px',
-                  left: '-30px'
-                },
-                '&::after': {
-                  bottom: '-40px',
-                  right: '-30px',
-                  transform: 'rotate(180deg)'
-                }
-              }}
-            >
-              Жизнь — это не поиск себя, а создание себя. Каждый день я сознательно работаю над тем, 
-              чтобы стать лучшей версией себя во всех сферах жизни.
-            </Typography>
-          </Box>
-        )}
+        <Box sx={{ mt: 6, textAlign: 'center', maxWidth: '600px', mx: 'auto' }}>
+          <Typography
+            variant="body1"
+            sx={{
+              fontStyle: 'italic',
+              color: theme.palette.text.secondary,
+              position: 'relative',
+              '&::before, &::after': {
+                content: '"\\201C"',
+                fontSize: '3rem',
+                color: theme.palette.primary.light,
+                position: 'absolute',
+                opacity: 0.3
+              },
+              '&::before': {
+                top: '-20px',
+                left: '-30px'
+              },
+              '&::after': {
+                bottom: '-40px',
+                right: '-30px',
+                transform: 'rotate(180deg)'
+              }
+            }}
+          >
+            Жизнь — это не поиск себя, а создание себя. Каждый день я сознательно работаю над тем,
+            чтобы стать лучшей версией себя во всех сферах жизни.
+          </Typography>
+        </Box>
       </Box>
     </MainLayout>
   );
