@@ -1,17 +1,19 @@
 import React from 'react';
-import { Box, Typography, Avatar, Paper, useTheme, useMediaQuery, Grid } from '@mui/material';
+import { Box, Typography, Avatar, Paper, useTheme, useMediaQuery, Grid, Breadcrumbs, Link as MuiLink } from '@mui/material';
 import MainLayout from '../layouts/MainLayout';
 import avatarImage from '../assets/images/avatar.jpg';
+import HomeIcon from '@mui/icons-material/Home';
+import { Link as RouterLink } from 'react-router-dom';
 
 const principles = [
-  { title: 'Семья', content: 'Близкие отношения, поддержка, совместное развитие' },
-  { title: 'Здоровье', content: 'Регулярные check-up, сбалансированное питание, профилактика' },
-  { title: 'Спорт', content: '3-4 тренировки в неделю, развитие выносливости и силы' },
-  { title: 'Карьера', content: 'Постоянное развитие навыков, значимые проекты, баланс' },
+  { title: 'Семья', content: 'Здоровые отношения в семье, воспитание детей и помощь своим родным' },
+  { title: 'Здоровье', content: 'Здоровое, умеренное питание, регулярные проверки здоровья и уход за собой' },
+  { title: 'Спорт', content: 'Ежедневная практика асан, поддержание себя в хорошей физической форме. Бег 3-4 раза в неделю' },
+  { title: 'Карьера', content: 'Изучение React и ИИ, движение в сторону фронтенд-разработки' },
   { title: 'Финансы', content: 'Инвестиции, пассивный доход, финансовая подушка' },
-  { title: 'Развитие', content: 'Чтение, курсы, изучение нового, выход из зоны комфорта' },
+  { title: 'Развитие', content: 'Изучение философии йоги' },
   { title: 'Творчество', content: 'Обучение игре на гитаре' },
-  { title: 'Духовность', content: 'Медитации, рефлексия, осознанность, благодарность' },
+  { title: 'Духовность', content: 'Медитации, йога, соблюдение принципов Яма и Нияма' },
 ];
 
 // Индексы для сетки 3x3, где центр — аватар, остальные — принципы
@@ -104,23 +106,27 @@ const PrinciplesPage: React.FC = () => {
           }
         }}
       >
+        {/* Хлебные крошки */}
+        <Breadcrumbs aria-label="breadcrumb" sx={{ mb: 2 }}>
+          <MuiLink
+            component={RouterLink}
+            to="/"
+            sx={{ display: 'flex', alignItems: 'center', color: 'inherit' }}
+            underline="hover"
+          >
+            <HomeIcon sx={{ mr: 0.5, fontSize: 18 }} />
+            Главная
+          </MuiLink>
+          <Typography color="text.primary">Принципы</Typography>
+        </Breadcrumbs>
         <Typography
           variant="h4"
           align="center"
           sx={{
             mb: isMobile ? 6 : 4,
             fontWeight: 500,
-            color: theme.palette.primary.main,
+            color: 'text.secondary',
             position: 'relative',
-            '&::after': {
-              content: '""',
-              display: 'block',
-              width: '80px',
-              height: '3px',
-              background: theme.palette.primary.main,
-              margin: '16px auto 0',
-              borderRadius: '3px'
-            }
           }}
         >
           Мои жизненные принципы
@@ -180,7 +186,8 @@ const PrinciplesPage: React.FC = () => {
                     sx={{
                       width: 160,
                       height: 160,
-                      border: `3px solid ${theme.palette.primary.main}`,
+                      border: '1px solid',
+                      borderColor: 'primary.main',
                       boxShadow: theme.shadows[8],
                     }}
                     alt="Костя Долгий"
@@ -223,8 +230,7 @@ const PrinciplesPage: React.FC = () => {
               }
             }}
           >
-            Жизнь — это не поиск себя, а создание себя. Каждый день я сознательно работаю над тем,
-            чтобы стать лучшей версией себя во всех сферах жизни.
+            Жизнь — самая большая ценность и счастье. Моя миссия - работать на благо всех живых существ вокруг
           </Typography>
         </Box>
       </Box>

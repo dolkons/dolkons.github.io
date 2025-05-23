@@ -80,12 +80,12 @@ const Home: React.FC = () => {
               borderRadius: 1.5,
               boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
               transition: 'all 0.3s ease-in-out',
-              backgroundColor: 'rgba(25, 118, 210, 0.8)',
+              backgroundColor: 'rgba(117, 117, 117, 0.8)',
               backdropFilter: 'blur(4px)',
               '&:hover': {
                 transform: 'translateY(-2px)',
                 boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
-                backgroundColor: 'rgba(25, 118, 210, 0.9)',
+                backgroundColor: 'rgba(117, 117, 117, 0.9)',
               }
             }}
           >
