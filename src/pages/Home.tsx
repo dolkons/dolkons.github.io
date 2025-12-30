@@ -63,8 +63,37 @@ const Home: React.FC = () => {
             display: 'flex',
             gap: 1,
             zIndex: 1000,
+            flexWrap: 'wrap',
+            justifyContent: 'flex-end',
           }}
         >
+          {/* Кнопка "Блог" */}
+          <Button
+            component={Link}
+            to="/qa"
+            variant="contained"
+            size="small"
+            color="primary"
+            sx={{
+              px: 1.5,
+              py: 0.5,
+              fontSize: '0.7rem',
+              textTransform: 'none',
+              borderRadius: 1.5,
+              boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
+              transition: 'all 0.3s ease-in-out',
+              backgroundColor: 'rgba(117, 117, 117, 0.8)',
+              backdropFilter: 'blur(4px)',
+              '&:hover': {
+                transform: 'translateY(-2px)',
+                boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
+                backgroundColor: 'rgba(117, 117, 117, 0.9)',
+              }
+            }}
+          >
+            Блог
+          </Button>
+
           {/* Кнопка "Мои жизненные принципы" */}
           <Button
             component={Link}
@@ -72,7 +101,7 @@ const Home: React.FC = () => {
             variant="contained"
             size="small"
             color="primary"
-            sx={{ 
+            sx={{
               px: 1.5,
               py: 0.5,
               fontSize: '0.7rem',
@@ -91,13 +120,40 @@ const Home: React.FC = () => {
           >
             Мои принципы
           </Button>
-          
+
+          {/* Кнопка "Итоги по годам" */}
+          <Button
+            component={Link}
+            to="/years"
+            variant="contained"
+            size="small"
+            color="primary"
+            sx={{
+              px: 1.5,
+              py: 0.5,
+              fontSize: '0.7rem',
+              textTransform: 'none',
+              borderRadius: 1.5,
+              boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
+              transition: 'all 0.3s ease-in-out',
+              backgroundColor: 'rgba(117, 117, 117, 0.8)',
+              backdropFilter: 'blur(4px)',
+              '&:hover': {
+                transform: 'translateY(-2px)',
+                boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
+                backgroundColor: 'rgba(117, 117, 117, 0.9)',
+              }
+            }}
+          >
+            Итоги по годам
+          </Button>
+
           {/* Кнопка резюме */}
           <Button
             variant="contained"
             size="small"
             color="primary"
-            sx={{ 
+            sx={{
               px: 1.5,
               py: 0.5,
               fontSize: '0.7rem',
