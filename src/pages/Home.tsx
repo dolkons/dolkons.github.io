@@ -29,10 +29,10 @@ const Home: React.FC = () => {
   return (
     <MainLayout>
       <TechIconsPanel />
-      <Box 
-        display="flex" 
-        flexDirection="column" 
-        alignItems="center" 
+      <Box
+        display="flex"
+        flexDirection="column"
+        alignItems="center"
         justifyContent="center"
         gap={6}
         sx={{
@@ -67,33 +67,6 @@ const Home: React.FC = () => {
             justifyContent: 'flex-end',
           }}
         >
-          {/* Кнопка "Блог" */}
-          <Button
-            component={Link}
-            to="/qa"
-            variant="contained"
-            size="small"
-            color="primary"
-            sx={{
-              px: 1.5,
-              py: 0.5,
-              fontSize: '0.7rem',
-              textTransform: 'none',
-              borderRadius: 1.5,
-              boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
-              transition: 'all 0.3s ease-in-out',
-              backgroundColor: 'rgba(117, 117, 117, 0.8)',
-              backdropFilter: 'blur(4px)',
-              '&:hover': {
-                transform: 'translateY(-2px)',
-                boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
-                backgroundColor: 'rgba(117, 117, 117, 0.9)',
-              }
-            }}
-          >
-            Блог
-          </Button>
-
           {/* Кнопка "Мои жизненные принципы" */}
           <Button
             component={Link}
@@ -177,8 +150,8 @@ const Home: React.FC = () => {
         </Box>
 
         {/* Социальные сети */}
-        <Box 
-          display="flex" 
+        <Box
+          display="flex"
           gap={1}
           sx={{
             position: 'fixed',
@@ -205,7 +178,7 @@ const Home: React.FC = () => {
               target="_blank"
               rel="noopener noreferrer"
               color="primary"
-              sx={{ 
+              sx={{
                 width: 28,
                 height: 28,
                 backgroundColor: 'rgba(25, 118, 210, 0.08)',
@@ -229,8 +202,8 @@ const Home: React.FC = () => {
         {/* Аватар */}
         <Avatar
           src={avatarImage}
-          sx={{ 
-            width: { xs: 80, sm: 110 }, 
+          sx={{
+            width: { xs: 80, sm: 110 },
             height: { xs: 80, sm: 110 },
             border: '1px solid',
             borderColor: 'primary.main',
@@ -246,8 +219,8 @@ const Home: React.FC = () => {
         />
 
         {/* Основная информация */}
-        <Box 
-          textAlign="center" 
+        <Box
+          textAlign="center"
           maxWidth="800px"
           sx={{
             animation: 'fadeIn 1s ease-out',
@@ -263,12 +236,12 @@ const Home: React.FC = () => {
             }
           }}
         >
-          <TypewriterText 
+          <TypewriterText
             variant={isMobile ? "h6" : "h5"}
             gutterBottom
             text="Привет, Я Костя"
             delay={100}
-            sx={{ 
+            sx={{
               mb: 2,
               fontWeight: 400,
               background: 'linear-gradient(45deg, #757575, #9e9e9e)',
@@ -278,10 +251,10 @@ const Home: React.FC = () => {
               WebkitTextFillColor: 'transparent',
             }}
           />
-          <Typography 
-            variant="body1" 
-            paragraph 
-            sx={{ 
+          <Typography
+            variant="body1"
+            paragraph
+            sx={{
               fontSize: { xs: '1rem', sm: '1.1rem' },
               mb: 6,
               color: 'text.secondary',
