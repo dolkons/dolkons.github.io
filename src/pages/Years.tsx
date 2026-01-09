@@ -17,7 +17,7 @@ const Years: React.FC = () => {
   return (
     <MainLayout>
       <Typography variant="h4" gutterBottom>
-        Итоги по годам
+        Итоги года
       </Typography>
       <Paper elevation={3} sx={{ p: 3 }}>
         <List>
