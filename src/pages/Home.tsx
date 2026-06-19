@@ -28,16 +28,15 @@ const Home: React.FC = () => {
 
   return (
     <MainLayout>
-      <TechIconsPanel />
       <Box
         display="flex"
         flexDirection="column"
         alignItems="center"
         justifyContent="center"
-        gap={6}
+        gap={{ xs: 4, sm: 6 }}
         sx={{
-          minHeight: '100vh',
-          py: { xs: 8, sm: 12 },
+          minHeight: '100dvh',
+          py: { xs: 12, sm: 10 },
           px: { xs: 2, sm: 4 },
           background: 'linear-gradient(180deg, rgba(245,245,245,0.95) 0%, rgba(235,235,235,0.85) 100%)',
           backdropFilter: 'blur(10px)',
@@ -57,14 +56,15 @@ const Home: React.FC = () => {
         {/* Кнопки в правом верхнем углу */}
         <Box
           sx={{
-            position: 'fixed',
+            position: 'absolute',
             top: 20,
             right: 20,
             display: 'flex',
             gap: 1,
             zIndex: 1000,
-            flexWrap: 'wrap',
+            flexWrap: { xs: 'wrap', sm: 'nowrap' },
             justifyContent: 'flex-end',
+            maxWidth: { xs: 'calc(100% - 40px)', sm: 'none' },
           }}
         >
           {/* Кнопка "Мои жизненные принципы" */}
@@ -154,8 +154,8 @@ const Home: React.FC = () => {
           display="flex"
           gap={1}
           sx={{
-            position: 'fixed',
-            top: 60,
+            position: 'absolute',
+            top: { xs: 100, sm: 60 },
             right: 20,
             zIndex: 1000,
             animation: 'slideUp 0.8s ease-out 0.5s both',
@@ -208,7 +208,6 @@ const Home: React.FC = () => {
             border: '1px solid',
             borderColor: 'primary.main',
             boxShadow: '0 8px 32px rgba(0,0,0,0.1)',
-            mt: { xs: -32, sm: -48 },
             transition: 'all 0.3s ease-in-out',
             '&:hover': {
               transform: 'scale(1.05)',
@@ -266,6 +265,8 @@ const Home: React.FC = () => {
             Добро пожаловать на мою персональную страничку в глубоком океане Интернета.
           </Typography>
         </Box>
+
+        <TechIconsPanel />
       </Box>
     </MainLayout>
   );

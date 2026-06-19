@@ -33,17 +33,12 @@ const TechIconsPanel: React.FC = () => {
   return (
     <Box
       sx={{
-        position: 'fixed',
-        left: '50%',
-        top: '50%',
-        transform: 'translate(-50%, 1%)',
         width: '100%',
         maxWidth: '800px',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
         gap: 2,
-        zIndex: 1000,
         overflow: 'hidden'
       }}
     >
@@ -66,6 +61,10 @@ const TechIconsPanel: React.FC = () => {
           overflow: 'hidden',
           gap: { xs: 2, sm: 4 },
           animation: 'slideRight 90s linear infinite',
+          '@media (prefers-reduced-motion: reduce)': {
+            animation: 'none',
+            overflowX: 'auto',
+          },
           '@keyframes slideRight': {
             '0%': {
               transform: 'translateX(0%)',
@@ -76,9 +75,9 @@ const TechIconsPanel: React.FC = () => {
           },
         }}
       >
-        {[...techIcons, ...techIcons, ...techIcons].map((tech) => (
+        {[...techIcons, ...techIcons].map((tech, index) => (
           <Box
-            key={tech.label}
+            key={`${tech.label}-${index}`}
             sx={{
               display: 'flex',
               flexShrink: 0,
@@ -138,4 +137,4 @@ const TechIconsPanel: React.FC = () => {
   );
 };
 
-export default TechIconsPanel; 
+export default TechIconsPanel;

@@ -1,9 +1,8 @@
 import React from 'react';
-import { Box, Typography, Avatar, Paper, useTheme, useMediaQuery, Grid, Breadcrumbs, Link as MuiLink } from '@mui/material';
+import { Box, Typography, Avatar, Paper, useTheme, useMediaQuery, Grid } from '@mui/material';
 import MainLayout from '../layouts/MainLayout';
 import avatarImage from '../assets/images/avatar.jpg';
-import HomeIcon from '@mui/icons-material/Home';
-import { Link as RouterLink } from 'react-router-dom';
+import PageBreadcrumbs from '../components/PageBreadcrumbs';
 
 const principles = [
   { title: 'Семья', content: 'Здоровые отношения в семье, воспитание детей и помощь своим родным' },
@@ -93,7 +92,7 @@ const PrinciplesPage: React.FC = () => {
           px: { xs: 2, sm: 4 },
           background: 'linear-gradient(180deg, rgba(245,245,245,0.95) 0%, rgba(235,235,235,0.85) 100%)',
           position: 'relative',
-          overflow: isMobile ? 'visible' : 'hidden',
+          overflow: 'hidden',
           '&::before': {
             content: '""',
             position: 'absolute',
@@ -107,18 +106,7 @@ const PrinciplesPage: React.FC = () => {
         }}
       >
         {/* Хлебные крошки */}
-        <Breadcrumbs aria-label="breadcrumb" sx={{ mb: 2 }}>
-          <MuiLink
-            component={RouterLink}
-            to="/"
-            sx={{ display: 'flex', alignItems: 'center', color: 'inherit' }}
-            underline="hover"
-          >
-            <HomeIcon sx={{ mr: 0.5, fontSize: 18 }} />
-            Главная
-          </MuiLink>
-          <Typography color="text.primary">Принципы</Typography>
-        </Breadcrumbs>
+        <PageBreadcrumbs items={[{ label: 'Принципы' }]} />
         <Typography
           variant="h4"
           align="center"
@@ -145,8 +133,8 @@ const PrinciplesPage: React.FC = () => {
               }}
               alt="Костя Долгий"
             />
-            {principles.map((p, i) => (
-              <Box key={i} sx={{ width: '100%', maxWidth: 400 }}>
+            {principles.map((p) => (
+              <Box key={p.title} sx={{ width: '100%', maxWidth: 400 }}>
                 <PrincipleBlock title={p.title} content={p.content} />
               </Box>
             ))}
