@@ -1,46 +1,42 @@
-# Getting Started with Create React App
+# dolkons.ru
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Персональный сайт Кости Долгого: главная страница, жизненные принципы и ежегодные итоги.
 
-## Available Scripts
+## Стек
 
-In the project directory, you can run:
+- React 18 и TypeScript
+- Material UI
+- React Router с hash-навигацией
+- MDX для публикаций
+- CRACO / Create React App
 
-### `npm start`
+## Локальный запуск
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Требуется Node.js 20.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+```bash
+npm ci
+npm start
+```
 
-### `npm test`
+Сайт откроется на `http://localhost:3000`.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Проверки
 
-### `npm run build`
+```bash
+npm run typecheck
+npm run lint
+npm run test:ci
+npm run build
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Как добавить итоги нового года
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. Создайте файл `src/content/years/<год>.mdx`.
+2. Импортируйте его и добавьте метаданные в `src/content/years/index.ts`.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Список годов и страница публикации используют один каталог метаданных.
 
-### `npm run eject`
+## Публикация
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Push в ветку `master` запускает GitHub Actions. Workflow проверяет типы, lint и тесты, собирает сайт и публикует каталог `build` в Yandex Object Storage.

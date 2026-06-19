@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Typography, TypographyProps } from '@mui/material';
+import { Typography, TypographyProps, useMediaQuery } from '@mui/material';
 
 interface TypewriterTextProps extends TypographyProps {
   text: string;
@@ -13,10 +13,17 @@ const TypewriterText: React.FC<TypewriterTextProps> = ({
   onComplete,
   ...props 
 }) => {
+  const prefersReducedMotion = useMediaQuery('(prefers-reduced-motion: reduce)');
   const [displayText, setDisplayText] = useState('');
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
+    if (prefersReducedMotion) {
+      setDisplayText(text);
+      setCurrentIndex(text.length);
+      return;
+    }
+
     if (currentIndex < text.length) {
       const timeout = setTimeout(() => {
         setDisplayText(prev => prev + text[currentIndex]);
@@ -27,7 +34,7 @@ const TypewriterText: React.FC<TypewriterTextProps> = ({
     } else if (onComplete) {
       onComplete();
     }
-  }, [currentIndex, delay, text, onComplete]);
+  }, [currentIndex, delay, text, onComplete, prefersReducedMotion]);
 
   return (
     <Typography {...props}>
@@ -38,10 +45,10 @@ const TypewriterText: React.FC<TypewriterTextProps> = ({
         height: '1em',
         backgroundColor: 'currentColor',
         marginLeft: '2px',
-        animation: 'blink 1s step-end infinite'
+        animation: prefersReducedMotion ? 'none' : 'blink 1s step-end infinite'
       }} />
     </Typography>
   );
 };
 
-export default TypewriterText; 
+export default TypewriterText;
